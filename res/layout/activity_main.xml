@@ -1,0 +1,165 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" > 
+
+     <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_camera"
+                    android:text="@string/btn_camera_text"/>
+                <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_sized_camera"
+                    android:text="@string/btn_sized_camera_text"/>
+                <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_sensor"
+                    android:text="@string/btn_sensor_text"/>
+               
+             </LinearLayout>
+            
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_mediaplayer"
+                    android:text="@string/btn_mediaplayer_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_mediastore"
+                    android:text="@string/btn_mediastore_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_sqlite"
+                    android:text="@string/btn_sqlite_text"/>
+                 </LinearLayout>
+                
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_phones"
+                    android:text="@string/btn_phones_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_video_view"
+                    android:text="@string/btn_video_view_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_player"
+                    android:text="@string/btn_player_text"/>
+                 </LinearLayout>
+                
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_qp"
+                    android:text="@string/btn_qp_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_gd"
+                    android:text="@string/btn_gd_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_web"
+                    android:text="@string/btn_web_text"/>
+                     
+                 </LinearLayout>
+                
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_tele"
+                    android:text="@string/btn_tele_text"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_calllog"
+                    android:text="通话记录"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_allapp"
+                    android:text="应用程序"/>
+                     
+                 </LinearLayout> 
+                
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_gps1"
+                    android:text="GPS1"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_gps2"
+                    android:text="GPS2"/>
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_gps3"
+                    android:text="GPS3"/>
+                 </LinearLayout> 
+                 
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                     <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_root"
+                    android:text="ROOT"/>
+                 </LinearLayout> 
+                
+                <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:orientation="horizontal"> 
+                    <EditText
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"/>
+                 </LinearLayout> 
+            
+                <ImageView 
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/main_Image_view"
+        android:contentDescription="@string/listItemImageViewDesc" ></ImageView>
+                
+       <!--  </LinearLayout> -->
+
+</LinearLayout>

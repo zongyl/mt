@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">mt</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="videoview_label">video player</string>
+    <string name="mpview_label">mediaPlayer</string>
+    <string name="mp_label">mediaPlayertest</string>
+    <string name="mediastore_label">视频列表</string>
+    <string name="listItemImageViewDesc">listItemImageViewDesc.toString()</string>
+    
+    <string name="btn_camera_text">摄像头</string>
+    <string name="btn_sized_camera_text">显示大图像</string>
+    <string name="btn_sensor_text">传感器</string>
+    <string name="btn_mediaplayer_text">视频播放</string>
+    <string name="btn_mediastore_text">视频列表</string>
+    <string name="btn_sqlite_text">SQL</string>
+    <string name="btn_phones_text">电话本</string>
+    <string name="btn_video_view_text">v_view</string>
+    <string name="btn_player_text">play</string>
+    <string name="btn_ccc_text">button</string>
+    <string name="btn_main_text">click...</string>
+    <string name="btn_qp_text">全屏</string>
+    <string name="btn_gd_text">手势</string>
+    <string name="btn_web_text">网页</string>
+    <string name="btn_tele_text">设备信息</string>
+    <string name="description">PIC</string>
+    
+    <string name="testsdk_btn_text">test SDK</string>
+</resources>
