@@ -47,6 +47,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_calllog).setOnClickListener(this);
 		findViewById(R.id.btn_allapp).setOnClickListener(this);
 		findViewById(R.id.btn_root).setOnClickListener(this);
+		findViewById(R.id.btn_file).setOnClickListener(this);
+		findViewById(R.id.btn_viewpager).setOnClickListener(this);
+		findViewById(R.id.btn_fields).setOnClickListener(this);
+		
+		findViewById(R.id.btn_httptest).setOnClickListener(this);
 	}
 
 	/*@Override
@@ -97,6 +102,14 @@ public class MainActivity extends Activity implements OnClickListener {
 			forward(AllAppActivity.class);
 		}else if(R.id.btn_root == v.getId()){
 			forward(RootActivity.class);
+		}else if(R.id.btn_file == v.getId()){
+			forward(FileActivity.class);
+		}else if(R.id.btn_viewpager == v.getId()){
+			forward(ViewPagerActivity.class);
+		}else if(R.id.btn_fields == v.getId()){
+			forward(BuildFieldActivity.class);
+		}else if(R.id.btn_httptest == v.getId()){
+			forward(HttpActivity.class);
 		}else if(R.id.btn_player == v.getId()){
 			//Toast.makeText(MainActivity.this, etHeight.getText(), 3000).show();
 			

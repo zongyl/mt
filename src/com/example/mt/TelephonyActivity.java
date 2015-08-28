@@ -18,6 +18,11 @@ public class TelephonyActivity extends Activity{
 		tv = (TextView)findViewById(R.id.telephony_tv);
 		
 		TelephonyManager tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+		getDeviceInfo(tm);
+		tv.setText(context);
+	}
+	
+	public String getDeviceInfo(TelephonyManager tm){
 		/**
 		 * 电话状态
 		 * CALL_STATE_IDLE = 0 无活动
@@ -105,6 +110,7 @@ public class TelephonyActivity extends Activity{
 		context += "VERSION.CODENAME:"+android.os.Build.VERSION.CODENAME+"\n";
 		context += "CPU_ABI:"+android.os.Build.CPU_ABI+"\n";
 		context += "MANUFACTURER:"+android.os.Build.MANUFACTURER+"\n";
-		tv.setText(context);
+		return context;
 	}
+	
 }

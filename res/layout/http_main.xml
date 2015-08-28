@@ -3,14 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView
-        android:id="@+id/pp"
+
+    <Button
+        android:id="@+id/btn_http0" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="text view " />
-    
-    <ListView android:layout_width="wrap_content"
+        android:text="android-async-http"
+        />
+    <Button
+        android:id="@+id/btn_http1" 
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/phonenumberListview"></ListView>
+        android:text="okhttp"
+        />
 </LinearLayout>
