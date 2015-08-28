@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <Button 
+        android:id="@+id/btn_file_tt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="探测SD卡路径"/>
+    <Button 
+        android:id="@+id/btn_file_log"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="开启日志"/>
+    <Button 
+        android:id="@+id/btn_file_log_print"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="记录日志"/>
+    <Button 
+        android:id="@+id/btn_file_log_close"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭日志"/>
+    
+    <TextView 
+        android:id="@+id/tv_file"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"></TextView>
+
+</LinearLayout>
