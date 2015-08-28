@@ -10,11 +10,27 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
 import com.example.gps.GPSActivity;
 import com.example.gps.LocationAct;
 import com.example.gps.NetActivity;
 
 public class MainActivity extends Activity implements OnClickListener {
+	
+	private LocationClient locationClient = null;
+	
+	private BDLocationListener bdLocationListener = new MyLocationListener();
+	
+	class MyLocationListener implements BDLocationListener{
+
+		@Override
+		public void onReceiveLocation(BDLocation arg0) {
+			
+		}
+		
+	}
 	
 	private void forward(Class<?> clazz){
 		Intent intent = new Intent(this, clazz);
