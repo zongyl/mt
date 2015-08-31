@@ -10,32 +10,17 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
 import com.example.gps.GPSActivity;
 import com.example.gps.LocationAct;
 import com.example.gps.NetActivity;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
-	private LocationClient locationClient = null;
-	
-	private BDLocationListener bdLocationListener = new MyLocationListener();
-	
-	class MyLocationListener implements BDLocationListener{
-
-		@Override
-		public void onReceiveLocation(BDLocation arg0) {
-			
-		}
-		
-	}
+	private static String TAG = "MainActivity";
 	
 	private void forward(Class<?> clazz){
 		Intent intent = new Intent(this, clazz);
-		Log.i("forward", clazz.getName());
-		System.out.println("println:"+clazz.getName());
+		Log.i(TAG, "forward:" + clazz.getName());
 		startActivity(intent);
 	}
 	
@@ -68,16 +53,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_fields).setOnClickListener(this);
 		
 		findViewById(R.id.btn_httptest).setOnClickListener(this);
+		findViewById(R.id.btn_flashlight).setOnClickListener(this);
 	}
-
-	/*@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int i = item.getItemId();
-		if(i == R.id.action_settings){
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}*/
 	
 	@Override
 	public void onClick(View v) {
@@ -126,6 +103,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			forward(BuildFieldActivity.class);
 		}else if(R.id.btn_httptest == v.getId()){
 			forward(HttpActivity.class);
+		}else if(R.id.btn_flashlight == v.getId()){
+			forward(FlashlightActivity.class);
 		}else if(R.id.btn_player == v.getId()){
 			//Toast.makeText(MainActivity.this, etHeight.getText(), 3000).show();
 			
