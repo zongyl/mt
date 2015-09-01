@@ -76,6 +76,9 @@
         <activity android:name=".SensorActivity">
         </activity>
         
+        <activity android:name=".TimePickerActivity">
+        </activity>
+        
         <activity android:name=".AllAppActivity">
         </activity>
         
