@@ -54,6 +54,11 @@
             android:label="@string/app_name" >
         </activity>
         
+        <activity
+            android:name=".TrafficStatsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        
         <activity 
             android:name="com.example.mt.HttpActivity"
             android:label="@string/videoview_label">

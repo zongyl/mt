@@ -1,7 +1,5 @@
 package com.example.mt;
 
-import java.sql.Time;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -57,6 +55,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_httptest).setOnClickListener(this);
 		findViewById(R.id.btn_flashlight).setOnClickListener(this);
 		findViewById(R.id.btn_timepicker).setOnClickListener(this);
+		findViewById(R.id.btn_trafficStats).setOnClickListener(this);
 	}
 	
 	@Override
@@ -110,6 +109,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			forward(FlashlightActivity.class);
 		}else if(R.id.btn_timepicker == v.getId()){
 			forward(TimePickerActivity.class);
+		}else if(R.id.btn_trafficStats == v.getId()){
+			forward(TrafficStatsActivity.class);
 		}else if(R.id.btn_player == v.getId()){
 			//Toast.makeText(MainActivity.this, etHeight.getText(), 3000).show();
 			

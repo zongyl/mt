@@ -3,6 +3,7 @@ package com.example.mt;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +11,7 @@ import android.view.Window;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -20,13 +22,13 @@ import android.widget.Toast;
 public class WebViewActivity extends Activity   {
 
 	WebView webView;
-	Button btn;
+	EditText et_url;
+	Button btn, btn_load;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
 		setContentView(R.layout.webview_main);
 		
 		webView = (WebView)findViewById(R.id.webView01);
@@ -54,15 +56,31 @@ public class WebViewActivity extends Activity   {
 		});
 	//	getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.web_title);
 		
-		
+		et_url = (EditText) findViewById(R.id.et_weburl);
 		btn = (Button)findViewById(R.id.web_btn);
-		btn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				alert(webView.getUrl());
-			}
-		});
+		btn_load = (Button) findViewById(R.id.btn_web_load);
 		
+		btn.setOnClickListener(new Click());
+		btn_load.setOnClickListener(new Click());
+		
+	}
+
+	class Click implements OnClickListener{
+		@Override
+		public void onClick(View v) {
+			switch (v.getId()) {
+			case R.id.web_btn:
+				alert(webView.getUrl());
+				break;
+			case R.id.btn_web_load:
+				String url = et_url.getText().toString();
+				Log.d("url", "" + url);
+				webView.loadUrl(url);
+				break;
+			default:
+				break;
+			}
+		}
 	}
 	
 	private void alert(String msg){
