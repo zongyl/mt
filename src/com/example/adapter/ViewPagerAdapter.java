@@ -2,8 +2,6 @@ package com.example.adapter;
 
 import java.util.ArrayList;
 
-import com.example.mt.ViewPagerActivity;
-
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
