@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import com.example.gps.GPSActivity;
 import com.example.gps.LocationAct;
 import com.example.gps.NetActivity;
+import com.example.volley.TestActivity;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
@@ -56,6 +57,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_flashlight).setOnClickListener(this);
 		findViewById(R.id.btn_timepicker).setOnClickListener(this);
 		findViewById(R.id.btn_trafficStats).setOnClickListener(this);
+		findViewById(R.id.btn_volley).setOnClickListener(this);
 	}
 	
 	@Override
@@ -111,6 +113,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			forward(TimePickerActivity.class);
 		}else if(R.id.btn_trafficStats == v.getId()){
 			forward(TrafficStatsActivity.class);
+		}else if(R.id.btn_volley == v.getId()){
+			forward(TestActivity.class);
 		}else if(R.id.btn_player == v.getId()){
 			//Toast.makeText(MainActivity.this, etHeight.getText(), 3000).show();
 			
