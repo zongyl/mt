@@ -21,7 +21,7 @@ public class AllAppActivity extends Activity{
 
 	public static final String TAG = "AllAppActivity";
 	
-	TextView tv_allapp;
+	TextView tv_allapp, tv_currapp;
 	
 	StringBuffer sbf;
 	
@@ -35,7 +35,8 @@ public class AllAppActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.allapp_main);
-		
+
+		tv_currapp = (TextView) findViewById(R.id.tv_currapp);
 		tv_allapp = (TextView) findViewById(R.id.tv_allapp);
 		tv_allapp.setMovementMethod(new ScrollingMovementMethod());
 		
@@ -43,28 +44,13 @@ public class AllAppActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				//tv_allapp.setText("loading...");
-				//tv_allapp.setText(sbf.toString());
-				
 				handler = new MyHandler();
-				loop();
-				
+				new Thread(runnable1).start();
 			}
 		});
 	}
 	
-	private void loop(){
-		//sbf = new StringBuffer();
-		int index = 0;
-		List<PackageInfo> packageInfos = getPackageManager().getInstalledPackages(0);
-		for(PackageInfo packageInfo : packageInfos){
-			index++;
-			temp = toString(packageInfo, index);
-			new Thread(runnable).start();
-			//sbf.append(temp);
-		}
-	}
-	
-	private String toString(PackageInfo pi, int index){
+	public String apktoString(PackageInfo pi, int index){
 		StringBuffer sb = new StringBuffer();
 		sb.append("versionCode:" + pi.versionCode + "\n");
 		sb.append("versionName:" + pi.versionName + "\n");
@@ -75,43 +61,74 @@ public class AllAppActivity extends Activity{
 		sb.append("label:" + pi.applicationInfo.loadLabel(getPackageManager()) + "\n");
 		sb.append("sourceDir:" + pi.applicationInfo.sourceDir + "\n");
 		sb.append(index + "\n");
-		Log.d(TAG, "===============================================================================");
-		Log.d(TAG, "debug!"+pi.versionCode);
-		Log.d(TAG, "debug!"+pi.versionName);
-		Log.d(TAG, "debug!"+pi.packageName);
-		Log.d(TAG, "debug!"+pi.sharedUserId);
-		Log.d(TAG, "debug!"+pi.sharedUserLabel);
-		Log.d(TAG, "debug!"+pi.describeContents());
-		Log.d(TAG, "debug!"+sdf.format(new Date(pi.lastUpdateTime)));
-		Log.d(TAG, "debug!"+sdf.format(new Date(pi.firstInstallTime)));
-		Log.d(TAG, "debug!"+pi.applicationInfo.loadLabel(getPackageManager()).toString());
-		Log.d(TAG, "debug!"+pi.applicationInfo.loadIcon(getPackageManager()));
-		Log.d(TAG, "debug!"+pi.applicationInfo.sourceDir);
+		Log.d(TAG, "==============================================================================="+index);
+//		Log.d(TAG, "debug!"+pi.versionCode);
+//		Log.d(TAG, "debug!"+pi.versionName);
+//		Log.d(TAG, "debug!"+pi.packageName);
+//		Log.d(TAG, "debug!"+pi.sharedUserId);
+//		Log.d(TAG, "debug!"+pi.sharedUserLabel);
+//		Log.d(TAG, "debug!"+pi.describeContents());
+//		Log.d(TAG, "debug!"+sdf.format(new Date(pi.lastUpdateTime)));
+//		Log.d(TAG, "debug!"+sdf.format(new Date(pi.firstInstallTime)));
+//		Log.d(TAG, "debug!"+pi.applicationInfo.loadLabel(getPackageManager()).toString());
+//		Log.d(TAG, "debug!"+pi.applicationInfo.loadIcon(getPackageManager()));
+//		Log.d(TAG, "debug!"+pi.applicationInfo.sourceDir);
 		return sb.toString();
 	}
 	
 	class MyHandler extends Handler{
 		@Override
 		public void handleMessage(Message msg) {
-			String apk = msg.getData().getString("apkInfo");
-			Log.d(TAG, apk);
+			Bundle data = msg.getData(); 
+			String apk = data.getString("apkInfo");
+			Log.d(TAG, " handler index:"+data.getInt("index"));
 			tv_allapp.setText(apk);
+			tv_currapp.setText(""+data.getInt("index"));//data.getString("currapp")
 		}
 	};
 	
+	/**
+	 * 用handler更新主线程
+	 */
 	Runnable runnable = new Runnable(){
 		@Override
 		public void run() {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			String apks = "";
+			int index = 0;
+			List<PackageInfo> packageInfos = getPackageManager().getInstalledPackages(0);
+			for(PackageInfo packageInfo : packageInfos){
+				index++;
+				temp = apktoString(packageInfo, index);
+				apks += temp;
+				Message msg = new Message();
+				Bundle data = new Bundle();
+				data.putString("apkInfo", apks);
+				data.putString("currapp", temp);
+				data.putInt("index", index);
+				msg.setData(data);
+				handler.sendMessage(msg);
 			}
-			Message msg = new Message();
-			Bundle data = new Bundle();
-			data.putString("apkInfo", temp);
-			msg.setData(data);
-			handler.sendMessage(msg);
+		}
+	};
+	
+	/**
+	 * 用runOnUiThread 更新主线程
+	 */
+	Runnable runnable1 = new Runnable(){
+		@Override
+		public void run() {
+			int index = 0;
+			List<PackageInfo> packageInfos = getPackageManager().getInstalledPackages(0);
+			for(PackageInfo packageInfo : packageInfos){
+				index++;
+				temp = apktoString(packageInfo, index);
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						tv_currapp.setText(temp);
+					}
+				});
+			}
 		}
 	};
 	
