@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.example.activitesmanager.ActivitesManager;
 import com.example.gps.GPSActivity;
 import com.example.gps.LocationAct;
 import com.example.gps.NetActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		findViewById(R.id.btn_timepicker).setOnClickListener(this);
 		findViewById(R.id.btn_trafficStats).setOnClickListener(this);
 		findViewById(R.id.btn_volley).setOnClickListener(this);
+		findViewById(R.id.btn_am).setOnClickListener(this);
 	}
 	
 	@Override
@@ -115,6 +117,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			forward(TrafficStatsActivity.class);
 		}else if(R.id.btn_volley == v.getId()){
 			forward(TestActivity.class);
+		}else if(R.id.btn_am == v.getId()){
+			forward(ActivitesManager.class);
 		}else if(R.id.btn_player == v.getId()){
 			//Toast.makeText(MainActivity.this, etHeight.getText(), 3000).show();
 			

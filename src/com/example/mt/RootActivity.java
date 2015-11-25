@@ -65,7 +65,9 @@ public class RootActivity extends Activity{
 				if(os != null){
 					os.close();
 				}
-				process.destroy();
+				if(process!=null){
+					process.destroy();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
