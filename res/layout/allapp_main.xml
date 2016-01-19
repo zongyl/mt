@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+   
     <Button 
         android:id="@+id/btn_tt"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="别摸我"/>
+    <Button 
+        android:id="@+id/btn_getall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="ALL"/>
     
     <TextView 
         android:id="@+id/tv_currapp"
         android:layout_width="fill_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"></TextView>
+    
+    <ImageView android:id="@+id/icon_currapp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
     <TextView 
         android:id="@+id/tv_allapp"
         android:layout_width="fill_parent"
         android:layout_height="1000dp"
-        android:scrollbars="vertical"></TextView>
+        android:scrollbars="vertical"
+        android:background="@color/gray"></TextView>
 
+    <ListView 
+        android:id="@+id/appList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 </LinearLayout>
+</ScrollView>

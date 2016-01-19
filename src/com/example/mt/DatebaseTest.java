@@ -46,7 +46,7 @@ public class DatebaseTest extends Activity{
 		
 	}
 
-	public void test(){
+	public void test11(){
 		SQLiteDatabase db = openOrCreateDatabase("test.db", Context.MODE_PRIVATE, null);
 		db.execSQL("drop table if exists users");
 		db.execSQL("create table users(id integer primary key autoincrement, name varchar, age smallint)");

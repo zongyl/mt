@@ -7,6 +7,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,7 +15,13 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.adapter.AppAdapter;
 
 @SuppressLint({ "NewApi", "SimpleDateFormat" })
 public class AllAppActivity extends Activity{
@@ -23,13 +30,21 @@ public class AllAppActivity extends Activity{
 	
 	TextView tv_allapp, tv_currapp;
 	
-	StringBuffer sbf;
+	StringBuffer sbf = new StringBuffer();
 	
 	MyHandler handler;
 	
+	ListView appList;
+	
+	ListAdapter adapter;
+	
+	ImageView icon;
+	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
-	String temp;
+	String temp, temp_all;
+	
+	Drawable temp_icon;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +54,38 @@ public class AllAppActivity extends Activity{
 		tv_currapp = (TextView) findViewById(R.id.tv_currapp);
 		tv_allapp = (TextView) findViewById(R.id.tv_allapp);
 		tv_allapp.setMovementMethod(new ScrollingMovementMethod());
+		icon = (ImageView) findViewById(R.id.icon_currapp);
+		
+		appList = (ListView) findViewById(R.id.appList);
+		List<PackageInfo> apkList = getPackageManager().getInstalledPackages(0);
+		Log.d(TAG, "apkList.size()" + apkList.size());
+		adapter = new AppAdapter(this, apkList);
+		appList.setAdapter(adapter);
 		
 		findViewById(R.id.btn_tt).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//tv_allapp.setText("loading...");
-				handler = new MyHandler();
+				//handler方式
+//				handler = new MyHandler();
+//				new Thread(runnable).start();
+
+				//runOnUiThread
 				new Thread(runnable1).start();
 			}
 		});
+		
+		findViewById(R.id.btn_getall).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				alert(sbf.toString());
+				tv_allapp.setText(sbf.toString());
+			}
+		});
+		
+	}
+	
+	public void alert(String text){
+		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 	}
 	
 	public String apktoString(PackageInfo pi, int index){
@@ -75,6 +113,7 @@ public class AllAppActivity extends Activity{
 //		Log.d(TAG, "debug!"+pi.applicationInfo.sourceDir);
 		return sb.toString();
 	}
+	
 	
 	class MyHandler extends Handler{
 		@Override
@@ -122,10 +161,14 @@ public class AllAppActivity extends Activity{
 			for(PackageInfo packageInfo : packageInfos){
 				index++;
 				temp = apktoString(packageInfo, index);
+				//temp_all += temp;
+				sbf.append(temp);
+				temp_icon = packageInfo.applicationInfo.loadIcon(getPackageManager());
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						tv_currapp.setText(temp);
+						icon.setImageDrawable(temp_icon);
 					}
 				});
 			}
