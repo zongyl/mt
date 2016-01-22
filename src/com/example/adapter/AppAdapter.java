@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.example.mt.R;
 
 public class AppAdapter extends BaseAdapter{
 
+	private static String TAG = "AppAdapter";
+	
 	private Context context;
 	
 	private List<?> items;
@@ -29,10 +32,11 @@ public class AppAdapter extends BaseAdapter{
 		public Button more_btn;//更多按钮
 	}
 	
-	public AppAdapter(Context context, List<?> items){
-		this.context = context;
-		this.items = items;
+	public AppAdapter(Context _context, List<?> _items){
+		this.context = _context;
+		this.items = _items;
 		inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.d(TAG, "this.items.size:" + this.items.size());
 	}
 	
 	@Override
@@ -58,7 +62,7 @@ public class AppAdapter extends BaseAdapter{
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.app_items, null);
 			holder.packageName = (TextView) convertView.findViewById(R.id.app_text);
-			holder.packageName.setText("qqqqqqqqqqq" + position);
+			holder.packageName.setText(position +" - "+ info.applicationInfo.loadLabel(context.getPackageManager()) + " - " + info.packageName);
 		}else{
 			holder = (ViewHolder) convertView.getTag();
 		}

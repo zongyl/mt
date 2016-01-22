@@ -60,6 +60,7 @@ public class AllAppActivity extends Activity{
 		List<PackageInfo> apkList = getPackageManager().getInstalledPackages(0);
 		Log.d(TAG, "apkList.size()" + apkList.size());
 		adapter = new AppAdapter(this, apkList);
+
 		appList.setAdapter(adapter);
 		
 		findViewById(R.id.btn_tt).setOnClickListener(new OnClickListener() {
@@ -113,7 +114,6 @@ public class AllAppActivity extends Activity{
 //		Log.d(TAG, "debug!"+pi.applicationInfo.sourceDir);
 		return sb.toString();
 	}
-	
 	
 	class MyHandler extends Handler{
 		@Override
